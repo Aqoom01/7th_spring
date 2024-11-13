@@ -19,6 +19,5 @@ public class ReviewRestController {
     public ApiResponse<WriteReviewResponseDTO.WriteReviewResponseDTOBuilder> WriteReview(@PathVariable("memberId") Long memberId, @PathVariable("shopId") Long shopId, @RequestBody WriteReviewRequestDTO.ReviewWriteRequestDTO requestDTO) {
         Review review = reviewService.write(memberId, shopId, requestDTO);
         return ApiResponse.onSuccess(ReviewConverter.toWriteResultDTO(review));
-
     }
 }
