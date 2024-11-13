@@ -29,5 +29,7 @@ public class StoresExistValidator implements ConstraintValidator<ExistStore, Lis
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.STORE_NOT_FOUND.toString()).addConstraintViolation();
         }
+
+        return isValid;
     }
 }
