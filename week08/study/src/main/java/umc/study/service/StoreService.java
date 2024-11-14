@@ -12,6 +12,8 @@ import umc.study.repository.RegionRepository;
 import umc.study.repository.StoreRepository;
 import umc.study.web.dto.StoreRequestDTO;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,5 +26,10 @@ public class StoreService {
         Store store = storeRepository.findById(request.getStoreId()).orElse(null);
         store.setRegion(regionRepository.findById(request.getRegionId()).orElseThrow(() -> new RegionHandler(ErrorStatus.REGION_NOT_FOUND)));
         return storeRepository.save(store);
+    }
+
+    public boolean isExistsinRepo(List<Long> storeIds) {
+        return storeIds.stream()
+                .allMatch(value -> storeRepository.existsById(value));
     }
 }
