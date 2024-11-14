@@ -12,6 +12,7 @@ import umc.study.repository.MemberMissionRepository;
 import umc.study.repository.MemberRepository;
 import umc.study.repository.MissionRepository;
 import umc.study.web.dto.MissiontoInProgressRequestDTO;
+import java.util.List;
 
 @Service
 @Transactional
@@ -32,5 +33,10 @@ public class MemberMissionService {
                 .build();
 
         return memberMissionRepository.save(memberMission);
+    }
+
+    public boolean isExistsinRepo(List<Long> values) {
+        return values.stream()
+                .allMatch(value -> memberMissionRepository.existsById(value));
     }
 }
