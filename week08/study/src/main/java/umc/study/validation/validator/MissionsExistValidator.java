@@ -5,15 +5,14 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.study.apiPayload.code.status.ErrorStatus;
-import umc.study.domain.mapping.MemberMission;
-import umc.study.repository.MemberMissionRepository;
+import umc.study.service.MemberMissionService;
 import umc.study.validation.annotation.ExistMission;
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class MissionsExistValidator implements ConstraintValidator<ExistMission, List<Long>> {
-    private final MemberMissionRepository memberMissionRepository;
+    private final MemberMissionService memberMissionService;
 
     @Override
     public void initialize(ExistMission constraintAnnotation) {
@@ -22,8 +21,7 @@ public class MissionsExistValidator implements ConstraintValidator<ExistMission,
 
     @Override
     public boolean isValid(List<Long> values, ConstraintValidatorContext context) {
-        boolean isValid = values.stream()
-                .allMatch(value -> memberMissionRepository.existsById(value));
+        boolean isValid = memberMissionService.isExistsinRepo(values);
 
         if(!isValid) {
             context.disableDefaultConstraintViolation();
