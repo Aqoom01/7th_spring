@@ -20,8 +20,6 @@ import umc.study.repository.StoreRepository;
 import umc.study.web.dto.StoreRequestDTO;
 import umc.study.web.dto.StoreResponseDTO;
 
-import java.util.List;
-
 @Service
 @Transactional
 @RequiredArgsConstructor
