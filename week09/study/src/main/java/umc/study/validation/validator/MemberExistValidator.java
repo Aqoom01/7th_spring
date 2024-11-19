@@ -3,7 +3,6 @@ package umc.study.validation.validator;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import umc.study.apiPayload.code.status.ErrorStatus;
-import umc.study.domain.Member;
 import umc.study.service.MemberCommandService;
 import umc.study.validation.annotation.ExistMember;
 

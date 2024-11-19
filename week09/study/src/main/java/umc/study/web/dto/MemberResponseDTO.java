@@ -1,9 +1,7 @@
 package umc.study.web.dto;
 
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MemberResponseDTO {
@@ -40,5 +38,30 @@ public class MemberResponseDTO {
         String storeName;
         String missionSpec;
         Integer reward;
+    }
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ownReviewsDTO {
+        Long reviewId;
+        String reviewBody;
+        Float reviewScore;
+        String storeName;
+        LocalDateTime createdAt;
+    }
+
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ownReviewListDTO {
+        List<ownReviewsDTO> ownreviews;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
     }
 }

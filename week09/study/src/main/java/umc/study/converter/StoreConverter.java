@@ -1,9 +1,7 @@
 package umc.study.converter;
 
-import lombok.Getter;
 import org.springframework.data.domain.Page;
 import umc.study.domain.Mission;
-import umc.study.domain.Region;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
 import umc.study.web.dto.StoreResponseDTO;

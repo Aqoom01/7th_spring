@@ -11,12 +11,13 @@ import umc.study.converter.MemberConverter;
 import umc.study.converter.MemberPreferConverter;
 import umc.study.domain.FoodCategory;
 import umc.study.domain.Member;
-import umc.study.domain.Mission;
+import umc.study.domain.Review;
 import umc.study.domain.mapping.MemberMission;
 import umc.study.domain.mapping.MemberPrefer;
 import umc.study.repository.FoodCategoryRepository;
 import umc.study.repository.MemberMissionRepository;
 import umc.study.repository.MemberRepository;
+import umc.study.repository.ReviewRepository;
 import umc.study.web.dto.MemberRequestDTO;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class MemberCommandServiceImpl implements MemberCommandService {
     private final MemberRepository memberRepository;
     private final FoodCategoryRepository foodCategoryRepository;
     private final MemberMissionRepository memberMissionRepository;
+    private final ReviewRepository reviewRepository;
 
     @Override
     @Transactional
@@ -55,5 +57,13 @@ public class MemberCommandServiceImpl implements MemberCommandService {
 
     public boolean isMember(Long memberId) {
         return memberRepository.existsById(memberId);
+    }
+
+    @Override
+    @Transactional
+    public Page<Review> getOwnReviews(Long memberId, Integer page) {
+        Member member = memberRepository.findById(memberId).get();
+        Page<Review> ownReviewsPage = reviewRepository.findAllByMember(member, PageRequest.of(page, 10));
+        return ownReviewsPage;
     }
 }
