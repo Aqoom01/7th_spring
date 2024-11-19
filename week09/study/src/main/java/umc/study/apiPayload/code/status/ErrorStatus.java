@@ -28,8 +28,11 @@ public enum ErrorStatus implements BaseErrorCode {
     FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOODCATEGORY4001", "요청한 카테고리ID는 없습니다."),
     STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001", "요청한 가게ID는 없습니다."),
     MISSION_ALREADY_INPROGRESS(HttpStatus.ALREADY_REPORTED, "MISSION4002", "요청한 미션은 이미 진행 중입니다."),
-    REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "REGION4001", "요청한 지역번호가 없습니다.");
-    
+    REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "REGION4001", "요청한 지역번호가 없습니다."),
+
+    //페이징 오류
+    PAGE_ERROR(HttpStatus.BAD_REQUEST, "PAGE4001", "요청한 페이지 넘버는 올바르지 않습니다.");
+
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
